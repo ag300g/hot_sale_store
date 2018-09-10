@@ -1,0 +1,50 @@
+# default input
+defaultInput : True  # whether to use the fake data
+
+# if defaultInput is set to True than use the data following
+skuPool : 1000
+ordPool : 100000 # total orders of 30 days
+SkuInOrd : [1,2,3,4,5,6,7,8,9,10]
+SkuInOrdDist : []
+SkuInOrdDist : 'square'
+
+
+ordRandomMethod : 'uniform'
+
+
+# if defaultInput is set to False than use the data.csv
+
+
+db : "JDPromoData"
+table : 'fact.Sales_DayProductPromotion'
+rawFileName : 'rawDayProductRDCPromotion'
+featureFileName: 'featuresDayProductRDCPromotion'
+localDataInputFolder : '/Users/yulong/Documents/data.forecast'
+localDataOutputFolder : '/Users/yulong/Documents/data.output'
+
+serverDataInputFolder: '/export/oliver/data/input'
+serverDataOutputFolder: '/export/oliver/data/output'
+
+#Set to true to download the table from SQL Server
+#Can only be run on the python server with True values
+loadData : True
+downloadLocally : True
+
+#attributesTable: 'JDPromoData.fact.Attributes_ProductAttributeAttributeValue'
+attributesTable: 'JDPromoAnalysis.fact.predictedAttributes'
+startShelvesDate: '2014-01-01'
+endShelvesDate: '2014-12-31'
+hierarchyLevel3Key: 798
+aggregateFilterKey: 7 # AttributeKey
+groupByKey: 'ProductKey'
+groupByDesc: 'ProductDesc'
+aggregateKey: 'AttributeValueKey'
+aggregateDesc: 'AttributeValueDesc'
+xValue: 'Date' # Date or DiffDate
+yLabel: 'meanVolume'
+yValue: 'UnitVolume'
+
+showInventory: True # significantly slows down code due to plotting inventory
+showSKUChart: True
+aggregatedProfiling: True
+calculateSeasonalCoefficients: True # will output excel files with seasonality coefficients (in addition to h5)
