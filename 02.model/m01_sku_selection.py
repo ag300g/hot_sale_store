@@ -21,9 +21,9 @@ function
                     - sale_3_avg: mean of latest 3 day sales
             # alpha must in [0,1]
  REQUIREMENTS: ---
-       AUTHOR: 
+       AUTHOR: ---
       VERSION: 1.0
-      CREATED: 
+      CREATED: ---
        MODIFY: ---
 =================================================
 """
