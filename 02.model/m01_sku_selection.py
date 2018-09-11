@@ -28,7 +28,6 @@ function
 =================================================
 """
 
-from auxiliary import fileManagement as fm
 import numpy as np
 from sklearn import preprocessing
 import pandas as pd
@@ -52,19 +51,35 @@ import scipy.stats
 
 from scipy.optimize import curve_fit
 from numpy import inf
+import yaml
+import platform
 
 import warnings
 warnings.simplefilter('ignore', np.RankWarning)
 
-def genOrder():
-    numpy.random.choice(numpy.arange(1, 7), p=[0.1, 0.05, 0.05, 0.2, 0.4, 0.2])
+def loadSettingsFromYamlFile(fileName):
+    """
+    Load settings from a yaml file(json file) specified by the fileName and returns a dictionary with all settings
+    """
+
+    if platform.system() == 'Windows':
+        scenarioSettingJSON_Win = '02.model/settings' + '\\' + fileName
+        with open(scenarioSettingJSON_Win, 'r') as f:
+            scenario = yaml.load(f)
+    else:
+        scenarioSettingsJSON_Linux = '02.model/settings' + '/' + fileName
+        with open(scenarioSettingsJSON_Linux, 'r') as f:
+            scenario = yaml.load(f)
+    return scenario
+
+
 
 def main(scenario):
 
 
-
-
 if __name__ == '__main__':
     scenarioFileName = 'settings_scenario_hot_sku_store.yaml'
-    settingsScenario = fm.loadSettingsFromYamlFile(scenarioFileName)
+    settingsScenario = loadSettingsFromYamlFile(scenarioFileName)
     main(settingsScenario)
+
+

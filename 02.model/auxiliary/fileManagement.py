@@ -37,7 +37,7 @@ def loadSettingsFromYamlFile(fileName):
         scenarioSettingJSON_Win = 'settings' + '\\' + fileName
         with open(scenarioSettingJSON_Win, 'r') as f:
             scenario = yaml.load(f)
-    else:  # mac系统是Darwin
+    else:
         scenarioSettingsJSON_Linux = 'settings' + '/' + fileName
         with open(scenarioSettingsJSON_Linux, 'r') as f:
             scenario = yaml.load(f)
