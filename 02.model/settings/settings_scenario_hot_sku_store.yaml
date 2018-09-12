@@ -2,8 +2,8 @@
 defaultInput : True  # whether to use the fake data
 
 # if defaultInput is set to True than use the data following
-skuNum : 200
-ordNum : 20000 # total orders of 30 days
+skuNum : 2000
+ordNum : 200000 # total orders of 30 days
 skuNumInOrd : [1,2,3,4,5,6,7,8,9,10]
 skuNumInOrdDist : [
 0.1818181818181818,
