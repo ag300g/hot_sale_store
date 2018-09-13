@@ -30,9 +30,8 @@ function
 =================================================
 """
 
+'''
 from auxiliary import fileManagement as fm
-from auxiliary import getRunningEnvironment
-
 import datetime as dt
 from textwrap import wrap
 import copy
@@ -45,7 +44,7 @@ import pandas as pd
 import scipy.stats
 from scipy.optimize import curve_fit
 from numpy import inf
-
+'''
 import numpy as np
 import yaml
 import platform
@@ -67,8 +66,7 @@ def loadSettingsFromYamlFile(fileName):
     return scenario
 
 
-
-def genFakesale(scenario):
+def genFakeSale(scenario):
     '''
     :param scenario
     :return: np.array: fake order based on 2-8 law
@@ -77,7 +75,7 @@ def genFakesale(scenario):
     selected_sku_id = sku_id[:int(scenario['skuNum']*0.2)]
     unselected_sku_id = sku_id[int(scenario['skuNum']*0.2):]
     fake_sku_id = selected_sku_id*16+unselected_sku_id
-    return {'sku_id': np.array(sku_id) 'fake_sku_id': np.array(fake_sku_id), 'selected_sku_id': np.array(selected_sku_id), 'unselected_sku_id': np.array(unselected_sku_id)}
+    return {'sku_id': np.array(sku_id), 'fake_sku_id': np.array(fake_sku_id), 'selected_sku_id': np.array(selected_sku_id), 'unselected_sku_id': np.array(unselected_sku_id)}
 
 
 def genFakePartition(scenario):
@@ -86,13 +84,12 @@ def genFakePartition(scenario):
     :param scenario:
     :return:
     '''
-    selected_sku_id = genFakesale(scenario)['selected_sku_id']
-    unselected_sku_id = genFakesale(scenario)['unselected_sku_id']
+    selected_sku_id = genFakeSale(scenario)['selected_sku_id']
+    unselected_sku_id = genFakeSale(scenario)['unselected_sku_id']
     sku_in_store_1 = np.append(selected_sku_id[:int(len(selected_sku_id) / 2)],
                                unselected_sku_id[:int(len(unselected_sku_id) / 2)])  ## small half to store 1
-    sku_in_store_2 = np.setdiff1d(np.append(selected_sku_id, unselected_sku_id), store_1, assume_unique=True)
+    sku_in_store_2 = np.setdiff1d(np.append(selected_sku_id, unselected_sku_id), sku_in_store_1, assume_unique=True)
     return { 'sku_in_store_1': sku_in_store_1, 'sku_in_store_2': sku_in_store_2 }
-
 
 
 def genFakeOrder(scenario):
@@ -104,13 +101,14 @@ def genFakeOrder(scenario):
     N = scenario['ordNum']
     M = scenario['skuNum']
     boldM = np.zeros((M, N), dtype=int)
-    fake_sku_id = genFakesale(scenario)['fake_sku_id']
+    fake_sku_id = genFakeSale(scenario)['fake_sku_id']
     sku_num_in_ord = np.random.choice(scenario['skuNumInOrd'], size=N, p=scenario['skuNumInOrdDist'])
 
     for i in range(N):
         unique, counts = np.unique(np.random.choice(fake_sku_id,sku_num_in_ord[i],replace=True),return_counts=True)
         boldM[unique,i] = counts
     return boldM
+
 
 def matrixDegenerate(boldM,selected_sku_id,sku_in_store_1):
     '''
@@ -149,63 +147,39 @@ def ordMark(deBoldM):
     cond3 = (deBoldM[0,:] > 0) & (deBoldM[1, :] == 0) & (deBoldM[2, :] > 0) & (deBoldM[3, :] == 0)
     false_y = np.logical_or(cond1,cond2,cond3)
     # false_y = cond1 | cond2 |cond3
+    choice_y = np.logical_not(false_y)
 
-    return false_y
-
-
-
+    return choice_y
 
 
+def countSkuNum(boldM, choice_y, selected_sku_id):
+    '''
+    :param BoldM:
+    :param choice_y:
+    :return: matrix of selected_sku_id*2, one row is selected sales another is total sales
+    '''
+    sale_in_hot = boldM[selected_sku_id,:][:,choice_y].sum(axis=1, keepdims=True)
+    sale_in_ori = boldM[selected_sku_id,:].sum(axis=1, keepdims=True)
 
+    return np.concatenate((sale_in_hot,sale_in_ori), axis=1)
 
-
-'''
-M = scenario['skuNum']
-
-
-a = np.array([0, 3, 0, 1, 0, 1, 2, 1, 0, 0, 0, 0, 1, 3, 4])
-unique, counts = np.unique(a, return_counts=True)
-dict(zip(unique, counts))
-
-Z = np.arange(12).reshape(3,4)
-Z[np.array([False,True,True]),:]
-
-
-
-if d3 > 0 and d4 > 0:
-    y = 0
-elif d1 > 0 and d2 == 0 and d3 > 0 and d4 == 0:
-    y = 0
-elif d1 == 0 and d2 > 0 and d3 == 0 and d4 > 0:
-    y = 0
-else:
-    y = 1
-
-a = np.array([True, False, False])
-b = np.array([False, True, False])
-c = np.array([True, True, True])
-d = np.array([False, False, False])
-
-a & b & d
-a | b | c
-
-
-
-'''
 
 def main(scenario):
     boldM = genFakeOrder(scenario)
-    selected_sku_id = genFakesale(scenario)['selected_sku_id']
+    selected_sku_id = genFakeSale(scenario)['selected_sku_id']
     sku_in_store_1 = genFakePartition(scenario)['sku_in_store_1']
-    deBoldMAll = matrixDegenerate(boldM,selected_sku_id,sku_in_store_1)
+
+    deBoldMAll = matrixDegenerate(boldM,selected_sku_id, sku_in_store_1)
     deBoldM = deBoldMAll['deBoldM']
-    deBoldM_rowname = deBoldMAll['deBoldM_rowname']
-    print(deBoldM_rowname)
-    false_y = ordMark(deBoldM)
+    # deBoldM_rowname = deBoldMAll['deBoldM_rowname']
+    # print(deBoldM_rowname)
+    choice_y = ordMark(deBoldM)
+    result = countSkuNum(boldM,choice_y,selected_sku_id)
 
 
+    np.savetxt("foo.csv", result, delimiter=",")
 
-
+    pass
 
 
 if __name__ == '__main__':
