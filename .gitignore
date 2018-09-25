@@ -37,4 +37,5 @@ var/
 *.sql
 
 
-*.Rproj.user
+# R
+*.Rproj
