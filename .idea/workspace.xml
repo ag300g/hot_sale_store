@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a19f81a-a9de-47b7-8d31-804e82e2c5f5" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/01.data_preparation/data_porcess.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01.data_preparation/01.sql" beforeDir="false" afterPath="$PROJECT_DIR$/01.data_preparation/01.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/foo.csv" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,26 +15,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="m01_sku_selection.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/02.model/m01_sku_selection.py">
+      <file leaf-file-name="01.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/01.data_preparation/01.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="83" selection-start-line="83" selection-end-line="83" />
-              <folding>
-                <marker date="1536660218651" expanded="true" signature="1999:2002" ph="..." />
-              </folding>
+            <state relative-caret-position="252">
+              <caret line="22" selection-start-line="22" selection-end-line="94" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="m02_sale_division.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/02.model/m02_sale_division.py">
+      <file leaf-file-name="data_porcess.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/01.data_preparation/data_porcess.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="163" column="50" selection-start-line="163" selection-start-column="39" selection-end-line="163" selection-end-column="50" />
-              <folding>
-                <element signature="e#1364#1382#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-25">
+              <caret line="112" column="19" lean-forward="true" selection-start-line="112" selection-start-column="19" selection-end-line="112" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -62,6 +65,13 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="SQL Script" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>store_1</find>
@@ -77,6 +87,8 @@
         <option value="$PROJECT_DIR$/02.model/m01_sku_selection.py" />
         <option value="$PROJECT_DIR$/02.model/settings/settings_scenario_hot_sku_store.yaml" />
         <option value="$PROJECT_DIR$/02.model/m02_sale_division.py" />
+        <option value="$PROJECT_DIR$/01.data_preparation/data_porcess.sql" />
+        <option value="$PROJECT_DIR$/.gitignore/.gitignore" />
       </list>
     </option>
   </component>
@@ -101,24 +113,7 @@
             <path>
               <item name="hot_sale_store" type="b2602c69:ProjectViewProjectNode" />
               <item name="hot_sale_store" type="462c0819:PsiDirectoryNode" />
-              <item name="01.data_preparation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hot_sale_store" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hot_sale_store" type="462c0819:PsiDirectoryNode" />
-              <item name="02.model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hot_sale_store" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hot_sale_store" type="462c0819:PsiDirectoryNode" />
-              <item name="02.model" type="462c0819:PsiDirectoryNode" />
-              <item name="datas" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hot_sale_store" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hot_sale_store" type="462c0819:PsiDirectoryNode" />
-              <item name="02.model" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
+              <item name=".gitignore" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -161,8 +156,8 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32935324" />
-      <window_info anchor="bottom" id="Python Console" order="7" visible="true" weight="0.29353234" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.279602" />
+      <window_info anchor="bottom" id="Python Console" order="7" weight="0.29353234" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.279602" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11848341" />
       <window_info id="Project Explorer" order="2" />
       <window_info id="Job Explorer" order="2" />
@@ -336,23 +331,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/01.data_preparation/01.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/02.model/m01_sku_selection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
-          <folding>
-            <marker date="1536660218651" expanded="true" signature="1999:2002" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/02.model/settings/settings_scenario_hot_sku_store.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -367,6 +345,37 @@
           <folding>
             <element signature="e#1364#1382#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02.model/m01_sku_selection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+          <folding>
+            <marker date="1536660218651" expanded="true" signature="1999:2002" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01.data_preparation/01.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="22" selection-start-line="22" selection-end-line="94" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01.data_preparation/data_porcess.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-25">
+          <caret line="112" column="19" lean-forward="true" selection-start-line="112" selection-start-column="19" selection-end-line="112" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
         </state>
       </provider>
     </entry>
