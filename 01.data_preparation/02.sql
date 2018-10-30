@@ -1,5 +1,5 @@
 ------------------------------------------
--- veryfy_data upload --
+-- verify_data upload --
 ------------------------------------------
 drop table if exists dev.dev_ipc_ioa_hot_sale_store_sku_all;
 CREATE TABLE dev.dev_ipc_ioa_hot_sale_store_sku_all (
@@ -174,7 +174,7 @@ create table dev.dev_ipc_ioa_hot_select_sku_stock stored as orc
 as
 select t.sku_id as sku_id
 	   ,t.future_store_id as future_store_id
-	   ,sum(t.stock) as stock_in_future_store_id
+	   ,sum(t.stock) as stock_in_future_store_id   -- 如果sku当前来源仓为多个, 要把库存加起来
 from
 	(select a.*
 		   ,coalesce(b.stock_qtty+b.in_transit_qtty,0) as stock
